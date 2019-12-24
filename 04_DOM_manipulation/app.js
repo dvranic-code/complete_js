@@ -29,7 +29,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     //Display the result
     var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block'    
+    diceDOM.style.display = 'block'
     diceDOM.src = 'dice-' + dice + '.png';
 
     //Update the round score IF the rolled number was NOT a 1
@@ -59,7 +59,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!';
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayeqr + '-panel').classList.add('winner');
     } else {
         nextPlayer();
     }
@@ -81,7 +81,3 @@ function nextPlayer() {
     // diceDOM.style.display = 'none'; -> don't like it, I want ONE to stay
 
 }
-
-
-
-
