@@ -113,4 +113,285 @@
 // console.log(obj.city);  // => Subotica
 
 
+/**
+ * FUNCTIONS
+ * 
+ * A function is an instance of the Object type
+ * A function behaves like any other object
+ * We can store functions in a variable
+ * We can pass a function as an argument to another function
+ * We can return a function from a function
+ * 
+ * FIRST-CLASS FUNCTIONS
+ */
 
+//  var years = [2004, 1965, 1937, 1983, 1978];
+
+//  function arrayCalc(array, fn) {
+//      var result = [];
+
+//      for(var i=0; i<array.length; i++) {
+//          result.push(fn(array[i]));
+//      }
+
+//      return result;
+//  }
+
+//  function calcAge(year) {
+//      return 2019-year;
+//  }
+
+//  var ages = arrayCalc(years, calcAge);
+
+//  function isFullAge(el) {
+//      return el > 18;
+//  }
+
+// var fullAges = arrayCalc(ages, isFullAge);
+
+//  console.log(ages);
+//  console.log(fullAges);
+
+//  function maxHeartRate(el) {
+
+//     if ( el >= 18 && el <= 80) {
+//         return Math.round(206.9 - (0.67 * el));
+//     } else {
+//         return -1;
+//     }
+     
+//  }
+
+//  var maxRate = arrayCalc(ages, maxHeartRate);
+//  console.log(maxRate);
+ 
+
+
+// Functions returning functions
+// function interviewQuestions(job) {
+//     if (job === 'designer') {
+//         return function(name) {
+//             console.log(name + ', can you please explain what UX design is?');
+        
+//         }
+//     } else if (job === 'teacher') {
+//         return function(name) {
+//             console.log(name + ', what subject do you teach?');
+            
+//         }
+//     } else {
+//         return function(name) {
+//             console.log("hello" + name +', what do you do?');
+            
+//         }
+        
+//     }
+// }
+
+// var teacherQuestion = interviewQuestions('teacher');
+
+// teacherQuestion('Dejan');
+
+// var designerQuestion = interviewQuestions('designer');
+// designerQuestion('dejan');
+
+// interviewQuestions('teacher')('Elena');
+
+
+
+// Function IIFE - for data privacy
+// function game( ) {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// }
+// game();
+
+// (function(goodLuck) {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5 - goodLuck);
+// })(2);
+
+
+
+/**
+ * CLOSURES
+ * 
+ * An inner function has always access to the variables
+ * and parameters of its outer function, even after the
+ * outer function has returned
+ * 
+ */
+// function retirement(retAge) {
+//     var a = ' years left until retirement.'
+//     return function(yearOfBirth) {
+//         var age = 2019 - yearOfBirth;
+//         console.log((retAge - age) + a);
+        
+//     }
+// }
+
+// var retSerbia = retirement(65);
+// retSerbia(1983);
+// var retGermany = retirement(66);
+// var retIceland = retirement(67);
+
+// retGermany(1983);
+// retIceland(1983);
+
+// function interviewQuestions(job) {
+//     return function(name) {
+//         if (job === 'designer') {
+//             console.log(name + ', can you please explain what UX design is?');
+//         } else if (job === 'teacher') {
+//             console.log(name + ', what subject do you teach?');
+//         } else {
+//             console.log("hello" + name +', what do you do?');
+//         }
+//     }
+// }
+
+// var teacherQuestion = interviewQuestions('teacher');
+
+// teacherQuestion('Dejan');
+
+
+
+//Bind, call and apply
+// method borowing - call() => set "this" variable
+// var john = {
+//     name: 'John',
+//     age: 26,
+//     job: 'teacher',
+//     presentation: function(style, timeOfDay) {
+//         if (style === 'formal') {
+//             console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'am ' + this.name + ', I\'am a ' + this.job + ', ' + this.age +' years old.');
+            
+//         } else if (style === 'friendly') {
+//             console.log('Hey, what\'s up. I\'am ' + this.name + ', I\'am a ' + this.job + ', ' + this.age +' years old. Hava a nice '+ timeOfDay+'.');
+            
+//         }
+//     }
+// };
+
+// var dejan = {
+//     name: 'Dejan',
+//     age: 36,
+//     job: 'web developer'
+// };
+
+// john.presentation('formal', 'morning');
+
+// john.presentation.call(dejan, 'friendly', 'evening');
+
+// //apply()
+// john.presentation.apply(dejan, ['friendly', 'afternoon']);
+
+// //bind() => returns function
+// var johnFriendly = john.presentation.bind(john, 'friendly');
+// johnFriendly('morning'); 
+// var dejanFormal = john.presentation.bind(dejan, 'formal');
+// dejanFormal('day');
+// dejanFormal('evening');
+
+
+// var years = [2004, 1965, 1937, 1983, 2001];
+
+// function arrayCalc(array, fn) {
+//     var result = [];
+
+//     for(var i=0; i<array.length; i++) {
+//         result.push(fn(array[i]));
+//     }
+
+//     return result;
+// }
+
+// function calcAge(year) {
+//     return 2019-year;
+// }
+
+// function isFullAge(limit, el) {
+//     return el >= limit;
+// }
+
+// var ages = arrayCalc(years, calcAge);
+// var fullAgeJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+// console.log(fullAgeJapan);
+// console.log(ages);
+
+
+/**
+ * CHALANGE
+ */
+
+(function() {
+
+    function Question(question, answers, corectAnswer) {
+        this.question = question;
+        this.answers = answers;
+        this.corectAnswer = corectAnswer;
+     };
+     Question.prototype.printQuestion = function(num = 0) {
+         console.log("Q" + (num+1) + ": " + this.question);
+         for (var i=0; i<this.answers.length; i++) {
+             console.log(i + ": " + this.answers[i]);
+         }   
+     }
+     Question.prototype.checkAnswer = function(el, callback) {
+         var sc;
+
+         if (el == this.corectAnswer) {
+             console.log("Correct!!!");
+             sc = callback(true);
+         } else {
+            console.log("That is not correct!");
+            sc = callback(false);
+         }
+
+         this.displayScore(sc);
+     }
+
+     Question.prototype.displayScore = function(score) {
+         console.log('Your current score is: '+ score);
+         console.log("====================================");
+         
+     }
+    
+     var q1 = new Question("What is my name?", ['Vladan', 'Elena', 'Dejan'], 2);
+     var q2 = new Question("What is my job?", ['architect', 'web developer', 'carpenter', 'coach'], 1);
+     var q3 = new Question("How old I am?", [36, 40, 26], 0);
+     var q4 = new Question("Do you like this game?", ['YES', 'NO'], 1);
+    
+     var questions = [];
+     questions.push(q1);
+     questions.push(q2);
+     questions.push(q3);
+     questions.push(q4);
+
+     function score() {
+         var sc = 0;
+         return function(correct) {
+             if (correct) {
+                 sc++;
+             }
+             return sc;
+         }
+     }
+
+     var updateScore = score();
+
+     askQuestion();
+
+     function askQuestion() {
+         var n = Math.floor(Math.random() * questions.length);
+
+         questions[n].printQuestion(n);
+
+         var usrAnswer = prompt('Write the number of correct answer from console:');
+         if (usrAnswer !== 'exit') {
+            questions[n].checkAnswer(usrAnswer, updateScore);
+            askQuestion();
+         }
+     }
+
+})();
