@@ -177,19 +177,20 @@ body {
 
 /***** LISTS *****/
 .container {
-    width: 1000px;
+    width: 98%;
+    max-width: 1000px;
     margin: 60px auto;
 }
 
 .income {
     float: left;
-    width: 475px;
-    margin-right: 50px;
+    width: 48%;
+    /* margin-right: auto; */
 }
 
 .expenses {
-    float: left;
-    width: 475px;
+    float: right;
+    width: 48%;
 }
 
 h2 {
