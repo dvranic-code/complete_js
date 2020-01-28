@@ -109,26 +109,99 @@
  * when we need a callback function
  */
 
-const years = [1983, 1990, 1946, 1958];
+// const years = [1983, 1990, 1946, 1958];
+
+// //ES5
+// var ages = years.map(function(year) {
+//     return 2019 - year;
+// });
+
+// console.log(ages);
+
+// //ES6
+// let age6 = years.map(year => 2019 - year);
+// console.log(age6);
+
+// age6 = years.map((year, index) => `Age element ${index+1}: ${2019 - year}`);
+// console.log(age6);
+
+// age6 = years.map( (year, index) => {
+//     const now = new Date().getFullYear();
+//     const age = now - year;
+//     return `Age ${index + 1}: ${age}`;
+// } );
+// console.log(age6);
+
+/**
+ * Lecture: Arrow functions 2
+ */
+
+// //ES5
+// var box5 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function() {
+
+//         var self = this;
+
+//         // document.querySelector('.green').addEventListener('click', function() {
+//         //     var str = 'this is box number ' + this.position + ' and it is ' + this.color;
+//         //     alert(str);
+//         // });
+
+//         document.querySelector('.green').addEventListener('click', function() {
+//             var str = 'this is box number ' + self.position + ' and it is ' + self.color;
+//             alert(str);
+//         });
+//     }
+// };
+
+// box5.clickMe();
+
+// //ES6
+// // arrow function uses this lexical this key word
+// // of it's sarounding
+
+// const box6 = {
+//     color: 'blue',
+//     position: 2,
+//     clickMe: function() {
+
+//         document.querySelector('.blue').addEventListener('click', () => {
+//             var str = 'this is box number ' + this.position + ' and it is ' + this.color;
+//             alert(str);
+//         });
+//     }
+// };
+
+// box6.clickMe();
 
 //ES5
-var ages = years.map(function(year) {
-    return 2019 - year;
-});
+// function Person(name) {
+//     this.name = name;
+// }
 
-console.log(ages);
+// Person.prototype.myFriends5 = function(friends) {
 
-//ES6
-let age6 = years.map(year => 2019 - year);
-console.log(age6);
+//     var arr = friends.map(function(el) {
+//         return this.name + ' is friends with ' + el;
+//     }.bind(this));
 
-age6 = years.map((year, index) => `Age element ${index+1}: ${2019 - year}`);
-console.log(age6);
+//     console.log(arr);
+// }
 
-age6 = years.map( (year, index) => {
-    const now = new Date().getFullYear();
-    const age = now - year;
-    return `Age ${index + 1}: ${age}`;
-} );
-console.log(age6);
+// var friend = ['Bob', 'Dejan', 'Elena'];
 
+// var john = new Person('John');
+// john.myFriends5(friend);
+
+// //ES6
+// Person.prototype.myFriends6 = function(friends) {
+
+//     const arr = friends.map( el => return `${this.name} is freinds with $
+//     {el}`);
+
+//     console.log(arr);
+    
+// }
+// new Person('Tony').myFriends6(friend);
