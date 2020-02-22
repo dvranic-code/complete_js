@@ -643,7 +643,7 @@ class Park extends TownElement
     treeDensity()
     {
         const density = this.numTrees/this.area;
-        console.log(`${this.name} has a tree density of ${density} trees per square km.`);
+        console.log(`${this.name} has a tree density of ${density.toFixed(2)} trees per square km.`);
     }
 
 }
@@ -687,8 +687,8 @@ class Street extends TownElement
 
 const glavna = new Street("Glavna ulica", 1871, 4.68, 4);
 const prviMaj = new Street("Prvi Maj", 1971, 9.28, 5);
-const korzo = new Street("Korzo", 1971, 3);
-const strahinja = new Street("Strahinjica Bana", 1971, 2.6);
+const korzo = new Street("Korzo", 1983, 3);
+const strahinja = new Street("Strahinjica Bana", 1923, 2.6);
 
 const allStreets = [glavna, prviMaj, korzo, strahinja];
 
@@ -702,7 +702,7 @@ function reportParks(p) {
     //Average age
     const ages = p.map(el => new Date().getFullYear() - el.builtYear );
     const [totalAge, avgAge] = calc(ages);
-    console.log(`Our ${p.length} parks have average age of ${avgAge} years.`);    
+    console.log(`Our ${p.length} parks have average age of ${avgAge.toFixed(2)} years.`);    
 
     //Which park has more than 1000 trees
     const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
@@ -713,6 +713,15 @@ function reportParks(p) {
 function reportStreet(s) {
 
     console.log('-----------STREETS REPORT--------------');
+
+    // Total and average length
+    const lengths = s.map( el => el.streetLength );
+    
+    const [totalLen, avgLen] = calc(lengths);
+    console.log(`Total length of all streets is ${totalLen.toFixed(2)}km while average length is ${avgLen.toFixed(2)}km`);
+
+    // Size classification
+    s.forEach(street => street.classification() );
 
 }
 
